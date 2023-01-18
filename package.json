@@ -1,0 +1,7 @@
+{
+"scripts": {
+    "start": "npm run open",
+    "open": "http-server public -a localhost -p 1234 -o",
+    "test": "opener http://localhost:9000"
+}
+}
