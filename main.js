@@ -5,7 +5,10 @@ const app = Vue.createApp ( {
             product: 'Socks',
             description: 'useful for keeping your feet warm',
             image: '/assets/images/socks_green.jpg',
-            url: '/assets/images/socks_blue.jpg'
+            url: '/assets/images/socks_blue.jpg',
+            inStock: true,
+            inventory: 100,
+            onSale: true
         }
     }
 })
