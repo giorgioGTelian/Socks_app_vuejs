@@ -29,12 +29,17 @@
       <h4 v-if="inventory > 10">In Stock</h4> 
       <h4 v-else-if="inventory <= 10 && inventory > 0">Almost sold out</h4>
       <h4 v-else>Out of Stock</h4>
+      <br>
+      <ul>
+        <li v-for="detail in details">{{ detail }}</li>
+      </ul>
 
       <h3 v-if="onSale">On Sale</h3>
 
 <div class="separation">
       <p v-if="inStock">avaible for shipping</p> <!-- v-show could be more performant used for toggling elemts' visibility -->
       <p v-else>not avaible</p>
+
     </div>
           </div>
         </div>
