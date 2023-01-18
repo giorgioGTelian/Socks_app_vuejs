@@ -33,7 +33,10 @@
       <ul>
         <li v-for="detail in details">{{ detail }}</li>
       </ul>
-
+      <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+      <ul>
+        <li v-for="size in sizes">{{ size }}</li>
+      </ul>
       <h3 v-if="onSale">On Sale</h3>
 
 <div class="separation">
