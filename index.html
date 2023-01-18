@@ -19,7 +19,7 @@
         <div class="product-container">
           <div class="product-image">
             <!-- image goes here -->
-            <a :href="url" ><img :src="image"></a>
+            <a :href="url" ><img :src="image" :class="{ 'out-of-stock-img' : !inStock }"></a>
            <!-- <img :src="images">  v-bind could be write as :src or :alt or :href :class :style -->
            
           </div>
@@ -35,7 +35,14 @@
       <ul>
         <li v-for="detail in details">{{ detail }}</li>
       </ul>
-      <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
+      <div 
+      v-for="variant in variants" 
+      :key="variant.id" 
+      @mouseover="updateImage(variant.image)"
+      class="color-circle"
+      :style="{ backgroundColor: variant.color }">
+      {{ variant.color }}
+    </div>
       <ul>
         <li v-for="size in sizes">{{ size }}</li>
       </ul>
@@ -44,7 +51,7 @@
 <div class="separation">
       <p v-if="inStock">avaible for shipping</p> <!-- v-show could be more performant used for toggling elemts' visibility -->
       <p v-else>not avaible</p>
-      <button class="button" v-on:click="addToCart">Add to Cart</button>  <!-- instead of v-on: you can write @click= -->
+      <button class="button" :class="{ disabledButton: !inStock }" :disabled="!inStock" v-on:click="addToCart">Add to Cart</button>  <!-- instead of v-on: you can write @click= -->
       <button class="button" v-on:click="removeToCart">Remove to Cart</button>
     </div>
           </div>
