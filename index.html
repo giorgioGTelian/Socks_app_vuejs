@@ -12,6 +12,8 @@
   <body>
     <div id="app">
       <div class="nav-bar"></div>
+
+      <div class="cart">Cart ({{ cart }})</div>
       
       <div class="product-display">
         <div class="product-container">
@@ -33,7 +35,7 @@
       <ul>
         <li v-for="detail in details">{{ detail }}</li>
       </ul>
-      <div v-for="variant in variants" :key="variant.id">{{ variant.color }}</div>
+      <div v-for="variant in variants" :key="variant.id" @mouseover="updateImage(variant.image)">{{ variant.color }}</div>
       <ul>
         <li v-for="size in sizes">{{ size }}</li>
       </ul>
@@ -42,7 +44,8 @@
 <div class="separation">
       <p v-if="inStock">avaible for shipping</p> <!-- v-show could be more performant used for toggling elemts' visibility -->
       <p v-else>not avaible</p>
-
+      <button class="button" v-on:click="addToCart">Add to Cart</button>  <!-- instead of v-on: you can write @click= -->
+      <button class="button" v-on:click="removeToCart">Remove to Cart</button>
     </div>
           </div>
         </div>
