@@ -24,7 +24,7 @@
            
           </div>
           <div class="product-info">
-      <h1>{{ product }}</h1>
+            <h1>{{ brand + ' ' + product }}</h1>
       <p>{{ description }}</p>
       <br>
       <!-- adding new levels of logic -->
@@ -36,9 +36,9 @@
         <li v-for="detail in details">{{ detail }}</li>
       </ul>
       <div 
-      v-for="variant in variants" 
+      v-for="(variant, index) in variants" 
       :key="variant.id" 
-      @mouseover="updateImage(variant.image)"
+      @mouseover="updateVariant(index)"
       class="color-circle"
       :style="{ backgroundColor: variant.color }">
       {{ variant.color }}
@@ -46,7 +46,7 @@
       <ul>
         <li v-for="size in sizes">{{ size }}</li>
       </ul>
-      <h3 v-if="onSale">On Sale</h3>
+      <h3  v-if="inStock">{{ brand  + ' ' +  product + ' '}} is On Sale</h3>
 
 <div class="separation">
       <p v-if="inStock">avaible for shipping</p> <!-- v-show could be more performant used for toggling elemts' visibility -->
